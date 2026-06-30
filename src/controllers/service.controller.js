@@ -2,14 +2,21 @@ const Service = require("../models/Service");
 
 exports.createService = async (req, res) => {
   try {
+    const body = req.body && typeof req.body === "object" ? req.body : {};
+
+    if (!body.title || !body.title.trim()) {
+      return res.status(400).json({
+        success: false,
+        message: "Service title is required",
+      });
+    }
+
     const service = await Service.create({
-      title: req.body.title,
-      shortDescription: req.body.shortDescription,
-      description: req.body.description,
-      icon: req.body.icon,
-      image: req.file
-        ? `/uploads/services/${req.file.filename}`
-        : "",
+      title: body.title.trim(),
+      shortDescription: body.shortDescription || "",
+      description: body.description || "",
+      icon: body.icon || "",
+      image: req.file ? `/uploads/services/${req.file.filename}` : "",
     });
 
     res.status(201).json({
@@ -91,11 +98,13 @@ exports.updateService = async (req, res) => {
 
     }
 
+    const body = req.body && typeof req.body === "object" ? req.body : {};
+
     const updateData = {
-      title: req.body.title,
-      shortDescription: req.body.shortDescription,
-      description: req.body.description,
-      icon: req.body.icon,
+      title: body.title,
+      shortDescription: body.shortDescription,
+      description: body.description,
+      icon: body.icon,
     };
 
     if (req.file) {

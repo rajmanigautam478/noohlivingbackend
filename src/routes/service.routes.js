@@ -3,6 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 const upload = require("../middlewere/serviceUpload");
+const authenticateAdmin = require("../middlewares/auth.middleware");
 
 const {
   createService,
@@ -12,14 +13,14 @@ const {
   deleteService,
 } = require("../controllers/service.controller");
 
-router.post("/", upload.single("image"), createService);
+router.post("/", authenticateAdmin, upload.single("image"), createService);
 
 router.get("/", getServices);
 
 router.get("/:id", getService);
 
-router.put("/:id", upload.single("image"), updateService);
+router.put("/:id", authenticateAdmin, upload.single("image"), updateService);
 
-router.delete("/:id", deleteService);
+router.delete("/:id", authenticateAdmin, deleteService);
 
 module.exports = router;

@@ -1,13 +1,22 @@
 const mongoose = require("mongoose");
 
-const testimonialSchema = new mongoose.Schema(
+const contactSchema = new mongoose.Schema(
   {
     name: {
       type: String,
       required: true,
       trim: true,
     },
-    role: {
+    email: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    phone: {
+      type: String,
+      default: "",
+    },
+    subject: {
       type: String,
       default: "",
     },
@@ -16,19 +25,9 @@ const testimonialSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    image: {
+    status: {
       type: String,
-      default: "",
-    },
-    rating: {
-      type: Number,
-      default: 5,
-      min: 1,
-      max: 5,
-    },
-    isActive: {
-      type: Boolean,
-      default: true,
+      default: "new",
     },
   },
   {
@@ -36,4 +35,4 @@ const testimonialSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Testimonial", testimonialSchema);
+module.exports = mongoose.model("Contact", contactSchema);

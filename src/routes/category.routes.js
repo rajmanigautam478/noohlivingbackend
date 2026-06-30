@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const upload = require("../middlewere/upload");
+const authenticateAdmin = require("../middlewares/auth.middleware");
 const {
   createCategory,
   getCategories,
@@ -11,9 +12,9 @@ const {
 
 router.get("/", getCategories);
 router.get("/:id", getCategory);
-router.post("/", upload.single("image"), createCategory);
-router.put("/:id", upload.single("image"), updateCategory);
-router.delete("/:id", deleteCategory);
+router.post("/", authenticateAdmin, upload.single("image"), createCategory);
+router.put("/:id", authenticateAdmin, upload.single("image"), updateCategory);
+router.delete("/:id", authenticateAdmin, deleteCategory);
 
 router.post("/test", (req, res) => {
   res.json({
