@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const authenticateAdmin = require("../middlewares/auth.middleware");
 
 const {
   createProject,
@@ -10,10 +9,10 @@ const {
   deleteProject,
 } = require("../controllers/project.controller");
 
-router.post("/", authenticateAdmin, createProject);
+router.post("/", createProject);
 router.get("/", getProjects);
 router.get("/:id", getProject);
-router.put("/:id", authenticateAdmin, updateProject);
-router.delete("/:id", authenticateAdmin, deleteProject);
+router.put("/:id", updateProject);
+router.delete("/:id", deleteProject);
 
 module.exports = router;

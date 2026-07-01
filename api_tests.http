@@ -1,0 +1,208 @@
+@baseUrl = http://localhost:5000
+
+# ==========================================
+# 1. Base / Test Route
+# ==========================================
+
+### Welcome API
+GET {{baseUrl}}/
+Accept: application/json
+
+# ==========================================
+# 2. Categories
+# ==========================================
+
+### Get All Categories
+GET {{baseUrl}}/api/categories
+Accept: application/json
+
+### Create Category
+POST {{baseUrl}}/api/categories
+Content-Type: application/json
+
+{
+  "name": "Luxury Furniture",
+  "isActive": true
+}
+
+### Test Category POST Endpoint
+POST {{baseUrl}}/api/categories/test
+Content-Type: application/json
+
+{
+  "test": "data"
+}
+
+# ==========================================
+# 3. Blogs
+# ==========================================
+
+### Get All Blogs
+GET {{baseUrl}}/api/blogs
+Accept: application/json
+
+### Create Blog
+POST {{baseUrl}}/api/blogs
+Content-Type: application/json
+
+{
+  "title": "Modern Interior Trends 2026",
+  "content": "Here are the top interior design trends...",
+  "description": "Short summary of trends",
+  "tags": ["interior", "design"],
+  "author": "Design Expert"
+}
+
+# ==========================================
+# 4. Collections
+# ==========================================
+
+### Get All Collections
+GET {{baseUrl}}/api/collections
+Accept: application/json
+
+### Create Collection
+POST {{baseUrl}}/api/collections
+Content-Type: application/json
+
+{
+  "name": "Summer Collection 2026",
+  "description": "Minimalist summer designs"
+}
+
+# ==========================================
+# 5. Contact Messages
+# ==========================================
+
+### Get All Contact Queries
+GET {{baseUrl}}/api/contact
+Accept: application/json
+
+### Submit Contact Query
+POST {{baseUrl}}/api/contact
+Content-Type: application/json
+
+{
+  "name": "Rahul Kumar",
+  "email": "rahul@example.com",
+  "phone": "+919876543210",
+  "subject": "Inquiry about Custom Sofa",
+  "message": "Hi, I would like to get a quote for a customized 3-seater sofa."
+}
+
+# ==========================================
+# 6. Gallery
+# ==========================================
+
+### Get All Gallery Items
+GET {{baseUrl}}/api/gallery
+Accept: application/json
+
+### Create Gallery Item
+POST {{baseUrl}}/api/gallery
+Content-Type: application/json
+
+{
+  "title": "Living Room Setup",
+  "description": "Elegant minimalist living room with wood finish"
+}
+
+# ==========================================
+# 7. Home Page Details
+# ==========================================
+
+### Get Home Page Info
+GET {{baseUrl}}/api/home
+Accept: application/json
+
+# ==========================================
+# 8. Newsletter
+# ==========================================
+
+### Get Newsletter Subscribers
+GET {{baseUrl}}/api/newsletter
+Accept: application/json
+
+### Subscribe to Newsletter
+POST {{baseUrl}}/api/newsletter/subscribe
+Content-Type: application/json
+
+{
+  "email": "subscriber@example.com"
+}
+
+# ==========================================
+# 9. Products
+# ==========================================
+
+### Get All Products
+GET {{baseUrl}}/api/products
+Accept: application/json
+
+### Create Product
+POST {{baseUrl}}/api/products
+Content-Type: application/json
+
+{
+  "name": "Veloce Lounge Chair",
+  "description": "Premium velvet chair with metallic legs",
+  "price": 24999,
+  "category": "65e717e4fcf574001c9a6331",
+  "collectionName": "65e717e4fcf574001c9a6332",
+  "isActive": true
+}
+
+# ==========================================
+# 10. Projects
+# ==========================================
+
+### Get All Projects
+GET {{baseUrl}}/api/projects
+Accept: application/json
+
+### Create Project
+POST {{baseUrl}}/api/projects
+Content-Type: application/json
+
+{
+  "title": "Villa project at South Delhi",
+  "description": "Complete architecture and interior design project.",
+  "location": "New Delhi",
+  "client": "Mr. Singhania"
+}
+
+# ==========================================
+# 11. Services
+# ==========================================
+
+### Get All Services
+GET {{baseUrl}}/api/services
+Accept: application/json
+
+### Create Service
+POST {{baseUrl}}/api/services
+Content-Type: application/json
+
+{
+  "title": "Space Planning & Layouts",
+  "description": "Detailed 2D & 3D space planning blueprints"
+}
+
+# ==========================================
+# 12. Testimonials
+# ==========================================
+
+### Get All Testimonials
+GET {{baseUrl}}/api/testimonials
+Accept: application/json
+
+### Create Testimonial
+POST {{baseUrl}}/api/testimonials
+Content-Type: application/json
+
+{
+  "name": "Amit Shah",
+  "designation": "Home Owner",
+  "review": "Outstanding craftsmanship and attention to detail!",
+  "rating": 5
+}

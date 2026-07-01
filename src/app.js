@@ -8,21 +8,29 @@ const projectRoutes = require("./routes/project.routes");
 const testimonialRoutes = require("./routes/testimonial.routes");
 const homeRoutes = require("./routes/home.routes");
 const contactRoutes = require("./routes/contact.routes");
-const adminRoutes = require("./routes/admin.routes");
-
+const galleryRoutes = require("./routes/gallery.routes");
+const blogRoutes = require("./routes/blog.routes");
+const collectionRoutes = require("./routes/collection.routes");
+const newsletterRoutes = require("./routes/newsletter.routes");
+const productRoutes = require("./routes/product.routes");
 
 // Middleware
 app.use(cors());
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 app.use("/uploads", express.static("uploads"));
+
+app.use("/api/categories", categoryRoutes);
 app.use("/api/services", serviceRoutes);
 app.use("/api/projects", projectRoutes);
 app.use("/api/testimonials", testimonialRoutes);
 app.use("/api/home", homeRoutes);
 app.use("/api/contact", contactRoutes);
-app.use("/api/admin", adminRoutes);
-
+app.use("/api/gallery", galleryRoutes);
+app.use("/api/blogs", blogRoutes);
+app.use("/api/collections", collectionRoutes);
+app.use("/api/newsletter", newsletterRoutes);
+app.use("/api/products", productRoutes);
 
 // Test Route
 app.get("/", (req, res) => {
