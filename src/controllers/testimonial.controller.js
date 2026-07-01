@@ -23,6 +23,7 @@ exports.createTestimonial = async (req, res) => {
       role: body.role || "",
       message: body.message.trim(),
       image: body.image || "",
+      video: body.video || "",
       rating: body.rating || 5,
       isActive: body.isActive !== false && body.isActive !== "false",
     });
@@ -97,6 +98,7 @@ exports.updateTestimonial = async (req, res) => {
     if (body.role !== undefined) updateData.role = body.role;
     if (body.message !== undefined) updateData.message = body.message.trim();
     if (body.image !== undefined) updateData.image = body.image;
+    if (body.video !== undefined) updateData.video = body.video;
     if (body.rating !== undefined) updateData.rating = body.rating;
     if (body.isActive !== undefined) updateData.isActive = body.isActive !== false && body.isActive !== "false";
 

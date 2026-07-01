@@ -11,7 +11,6 @@ const endpoints = [
   { name: 'Get Contacts', path: '/api/contact', method: 'GET' },
   { name: 'Get Gallery', path: '/api/gallery', method: 'GET' },
   { name: 'Get Home Detail', path: '/api/home', method: 'GET' },
-  { name: 'Get Newsletter Subscribers', path: '/api/newsletter', method: 'GET' },
   { name: 'Get Products', path: '/api/products', method: 'GET' },
   { name: 'Get Projects', path: '/api/projects', method: 'GET' },
   { name: 'Get Services', path: '/api/services', method: 'GET' },

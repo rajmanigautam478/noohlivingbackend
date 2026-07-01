@@ -116,22 +116,6 @@ GET {{baseUrl}}/api/home
 Accept: application/json
 
 # ==========================================
-# 8. Newsletter
-# ==========================================
-
-### Get Newsletter Subscribers
-GET {{baseUrl}}/api/newsletter
-Accept: application/json
-
-### Subscribe to Newsletter
-POST {{baseUrl}}/api/newsletter/subscribe
-Content-Type: application/json
-
-{
-  "email": "subscriber@example.com"
-}
-
-# ==========================================
 # 9. Products
 # ==========================================
 
@@ -202,7 +186,36 @@ Content-Type: application/json
 
 {
   "name": "Amit Shah",
-  "designation": "Home Owner",
-  "review": "Outstanding craftsmanship and attention to detail!",
+  "role": "Home Owner",
+  "message": "Outstanding craftsmanship and attention to detail!",
+  "image": "https://example.com/image.jpg",
+  "video": "https://example.com/video.mp4",
   "rating": 5
 }
+
+# ==========================================
+# 13. Admin Authentication
+# ==========================================
+
+### Register Admin
+POST {{baseUrl}}/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "password": "securepassword123"
+}
+
+### Login Admin
+# @name login
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "password": "securepassword123"
+}
+
+### Logout Admin
+POST {{baseUrl}}/api/auth/logout
+Authorization: Bearer {{login.response.body.token}}

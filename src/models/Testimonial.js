@@ -20,6 +20,10 @@ const testimonialSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
+    video: {
+      type: String,
+      default: "",
+    },
     rating: {
       type: Number,
       default: 5,

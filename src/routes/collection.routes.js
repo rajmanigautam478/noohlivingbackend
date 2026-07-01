@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const upload = require("../middlewere/collectionUpload");
+const { protectAdmin } = require("../middlewares/auth.middleware");
 const {
   createCollection,
   getCollections,
@@ -11,8 +12,8 @@ const {
 
 router.get("/", getCollections);
 router.get("/:idOrSlug", getCollection);
-router.post("/", upload.single("image"), createCollection);
-router.put("/:id", upload.single("image"), updateCollection);
-router.delete("/:id", deleteCollection);
+router.post("/", protectAdmin, upload.single("image"), createCollection);
+router.put("/:id", protectAdmin, upload.single("image"), updateCollection);
+router.delete("/:id", protectAdmin, deleteCollection);
 
 module.exports = router;

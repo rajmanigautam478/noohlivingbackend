@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const upload = require("../middlewere/productUpload");
+const { protectAdmin } = require("../middlewares/auth.middleware");
 const {
   createProduct,
   getProducts,
@@ -11,8 +12,8 @@ const {
 
 router.get("/", getProducts);
 router.get("/:idOrSlug", getProduct);
-router.post("/", upload.single("image"), createProduct);
-router.put("/:id", upload.single("image"), updateProduct);
-router.delete("/:id", deleteProduct);
+router.post("/", protectAdmin, upload.single("image"), createProduct);
+router.put("/:id", protectAdmin, upload.single("image"), updateProduct);
+router.delete("/:id", protectAdmin, deleteProduct);
 
 module.exports = router;
