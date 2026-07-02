@@ -11,12 +11,25 @@ exports.createService = async (req, res) => {
       });
     }
 
+    let features = [];
+    if (body.features) {
+      try {
+        features = typeof body.features === "string" ? JSON.parse(body.features) : body.features;
+      } catch (e) {
+        features = [];
+      }
+    }
+
     const service = await Service.create({
       title: body.title.trim(),
       shortDescription: body.shortDescription || "",
       description: body.description || "",
       icon: body.icon || "",
       image: req.file ? `/uploads/services/${req.file.filename}` : "",
+      category: body.category || "",
+      ctaText: body.ctaText || "",
+      ctaLink: body.ctaLink || "",
+      features,
     });
 
     res.status(201).json({
@@ -105,7 +118,20 @@ exports.updateService = async (req, res) => {
       shortDescription: body.shortDescription,
       description: body.description,
       icon: body.icon,
+      category: body.category,
+      ctaText: body.ctaText,
+      ctaLink: body.ctaLink,
     };
+
+    if (body.features !== undefined) {
+      let features = [];
+      try {
+        features = typeof body.features === "string" ? JSON.parse(body.features) : body.features;
+      } catch (e) {
+        features = [];
+      }
+      updateData.features = features;
+    }
 
     if (req.file) {
       updateData.image = `/uploads/services/${req.file.filename}`;

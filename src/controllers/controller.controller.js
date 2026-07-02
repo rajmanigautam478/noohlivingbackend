@@ -62,3 +62,51 @@ exports.getContacts = async (req, res) => {
     });
   }
 };
+
+exports.updateContactStatus = async (req, res) => {
+  try {
+    const { status } = req.body;
+    const contact = await Contact.findByIdAndUpdate(
+      req.params.id,
+      { status },
+      { new: true }
+    );
+    if (!contact) {
+      return res.status(404).json({
+        success: false,
+        message: "Inquiry not found",
+      });
+    }
+    res.status(200).json({
+      success: true,
+      data: contact,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+exports.deleteContact = async (req, res) => {
+  try {
+    const contact = await Contact.findByIdAndDelete(req.params.id);
+    if (!contact) {
+      return res.status(404).json({
+        success: false,
+        message: "Inquiry not found",
+      });
+    }
+    res.status(200).json({
+      success: true,
+      message: "Inquiry deleted successfully",
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+

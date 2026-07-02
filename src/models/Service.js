@@ -38,6 +38,26 @@ const serviceSchema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
+
+    category: {
+      type: String,
+      default: "",
+    },
+
+    ctaText: {
+      type: String,
+      default: "",
+    },
+
+    ctaLink: {
+      type: String,
+      default: "",
+    },
+
+    features: {
+      type: [String],
+      default: [],
+    },
   },
   {
     timestamps: true,

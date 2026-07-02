@@ -13,6 +13,7 @@ const galleryRoutes = require("./routes/gallery.routes");
 const blogRoutes = require("./routes/blog.routes");
 const collectionRoutes = require("./routes/collection.routes");
 const productRoutes = require("./routes/product.routes");
+const heroRoutes = require("./routes/hero.routes");
 
 // Middleware
 app.use(cors());
@@ -31,6 +32,7 @@ app.use("/api/gallery", galleryRoutes);
 app.use("/api/blogs", blogRoutes);
 app.use("/api/collections", collectionRoutes);
 app.use("/api/products", productRoutes);
+app.use("/api/hero", heroRoutes);
 
 // Test Route
 app.get("/", (req, res) => {
